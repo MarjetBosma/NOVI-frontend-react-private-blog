@@ -1,9 +1,11 @@
 import React from 'react';
 import './Login.css'
 
-function Login(props) {
+function Login() {
     return (
-        <div></div>
+        <main>
+            <h1>Login</h1>
+        </main>
     );
 }
 

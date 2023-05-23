@@ -1,9 +1,16 @@
 import React from 'react';
 import './BlogPost.css'
+import  { useParams } from 'react-router-dom'
 
-function BlogPost(props) {
+function BlogPost() {
+    const { id } = useParams();
+
     return (
-        <div></div>
+        <main>
+            <h1>Titel</h1>
+            <h3>Datum</h3>
+            <p>Inhoud blog</p>
+        </main>
     );
 }
 
