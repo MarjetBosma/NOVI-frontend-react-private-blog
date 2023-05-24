@@ -7,10 +7,9 @@ function BlogOverview() {
     return (
        <main>
         <h1>Overzicht blogs</h1>
-        <h3>Aantal blogposts: {posts.length}</h3>
+        <h3>Er zijn momenteel {posts.length} blogposts beschikbaar.</h3>
            <ul className="blog-list">
                {posts.map((blog) => {
-                   console.log(blog.title)
                    return <li className= "blog-link" key={ blog.id }>
                        <Link to={`/blogposts/${blog.id}`}>
                            {blog.title}

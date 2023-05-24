@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom'
 import BlogPost from "./pages/blog-post/BlogPost";
@@ -6,7 +6,7 @@ import BlogOverview from "./pages/blog-overview/BlogOverview";
 import Login from "./pages/login/Login";
 import Home from "./pages/home/Home";
 import Navigation from "./components/Navigation";
-
+import PageNotFound from "./pages/page-not-found/PageNotFound"
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
               <Route path="/login" element={<Login/>} />
               <Route path="/blogposts" element={<BlogOverview/>} />
               <Route path="/blogposts/:blogId" element={<BlogPost/>} />
-              {/*<Route path="*" element={<NotFound/>} />*/}
+              <Route path="*" element={<PageNotFound/>} />
           </Routes>
       </>
   );
