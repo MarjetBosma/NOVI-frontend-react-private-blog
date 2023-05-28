@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
-import users from '../../data/posts.json'
+import users from '../../data/users.json'
 
 function Login({ toggleAuth }) {
     const navigate = useNavigate();
@@ -9,17 +9,34 @@ function Login({ toggleAuth }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    function signIn() {
-        toggleAuth(true);
-        navigate('/'); // Na inloggen naar de homepage
-    }
 
     function handleSubmit(e) {
         e.preventDefault();
         console.log(`
-        Gebruikersnaam: ${username},
+        Gebruikersnaam: ${username}
         Wachtwoord: ${password}
         `)
+        const responseUsername = users.find((test) => {
+            return test.username === username
+        });
+        const responsePassword = users.find((test) => {
+            return test.password === password
+
+        });
+
+        if (responseUsername) {
+            toggleAuth(true)
+            navigate('/');
+        } else {
+            console.log("Gebruikersnaam incorrect");
+        }
+
+        if (responsePassword) {
+            toggleAuth(true)
+            navigate('/')
+        } else {
+            console.log("Wachtwoord incorrect")
+        }
     }
 
     return (
@@ -34,7 +51,7 @@ function Login({ toggleAuth }) {
                     type="text"
                     name="username"
                     id="username"
-                    value="" // Hoe verwijs ik naar de data in users.json? Gaat dit met mappen? En moet ik nog iets met een if/else o.i.d. voor als de username niet herkend wordt?
+                    value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
                 <label htmlFor="password-field">Wachtwoord</label>
@@ -42,14 +59,15 @@ function Login({ toggleAuth }) {
                     type="text"
                     name="password"
                     id="password"
-                    value={""} // Hoe verwijs ik naar de data in users.json? Gaat dit met mappen? En moet ik nog iets met een if/else o.i.d. voor als het password niet herkend wordt?
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit" onClick={signIn}>
+                <button type="submit"
+                        className="login-button"
+                        onClick={handleSubmit}>
                 Inloggen
                 </button>
             </form>
-            {/*Het formulier is nog niet functioneel. Ik kan niets typen, en er gebeurt ook nog niks als ik op inloggen druk. Wat zie ik over het hoofd? In een eerdere fase werkte mijn simpele inlogknop wel, in de zin van dat er dan verschil was of je bij de blogs kon of niet, maar inmiddels doet dit het niet meer...*/}
         </main>
     );
 }

@@ -26,3 +26,8 @@
     color: deepskyblue;
     padding: 20px;
 }
+
+.logout-button {
+    padding: 5px 8px;
+    margin-left: 10px;
+}

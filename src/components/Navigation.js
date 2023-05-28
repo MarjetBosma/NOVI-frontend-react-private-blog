@@ -2,15 +2,13 @@ import React from 'react';
 import './Navigation.css'
 import { NavLink, useNavigate } from 'react-router-dom';
 
-function Navigation( isAuth, toggleAuth) {
+function Navigation({ isAuth, toggleAuth }) {
     const navigate = useNavigate();
 
-    function signOut() {
+    function Logout() {
         toggleAuth(false);
-        navigate('/')  // Terug naar de homepage na uitloggen
+        navigate('/')  // Terug naar Home na uitloggen
     }
-
-    // Eerder had ik een console.log die liet zien wanneer ik wel en niet ingelogd was. Ergens terwijl ik eerder werkte en dingen toevoegde is die gesneuveld en ik weet even niet meer hoe ik het deed... Het in- en uitloggen werkt nu niet.
 
     return (
         <nav>
@@ -25,17 +23,20 @@ function Navigation( isAuth, toggleAuth) {
                         </NavLink>
                     </li>
 
-                    {/* Als de gebruiker is ingelogd (isAuth === true), de menu-items blog overzicht en uitloggen zien. Als de gebruiker niet ingelogd is, alleen het menu-item login laten zien. Tenminste, als de code werkt, en dat is nu nog niet het geval. */}
+                    {/* Als de gebruiker is ingelogd (isAuth === true), de menu-items blog overzicht en uitloggen zien. Als de gebruiker niet ingelogd is, alleen het menu-item login laten zien. Home is altijd zichtbaar. */}
                     {isAuth === true
                       ? <>
                             <li>
                                 <NavLink to="/blogposts"
                                          className={({ isActive }) => isActive === true ? 'active-link' : 'default-link'}>
+                                    {/*isActive zorgt ervoor dat het navbar-item van de pagina waar de gebruiker op dat moment is, een andere kleur krijgt. */}
                                     Blog overzicht
                                 </NavLink>
                             </li>
                             <li>
-                                <button type="button" onClick={signOut}>
+                                <button type="button"
+                                        className="logout-button"
+                                        onClick={Logout}>
                                     Uitloggen
                                 </button>
                             </li>
@@ -49,7 +50,6 @@ function Navigation( isAuth, toggleAuth) {
                             </li>
                     }
                 </ul>
-                {/*Dit werkt nog niet zoals het zou moeten, ik krijg alleen de : situatie te zien. Eerder werkte mijn inlogknop wel, in de zin van dat er dan verschil was of je bij de blogs kon of niet, maar inmiddels doet dit het niet meer... Wat klopt er niet?*/}
             </div>
         </nav>
     );

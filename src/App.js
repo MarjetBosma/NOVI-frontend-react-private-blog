@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Route, Routes } from 'react-router-dom'
+import {Navigate, Route, Routes} from 'react-router-dom'
 import BlogPost from "./pages/blog-post/BlogPost";
 import BlogOverview from "./pages/blog-overview/BlogOverview";
 import Login from "./pages/login/Login";
@@ -16,26 +16,24 @@ function App() {
 
   return (
       <>
-          <Navigation auth={isAuthenticated} toggleAuth={toggleIsAuthenticated}/>
+          <Navigation isAuth={isAuthenticated} toggleAuth={toggleIsAuthenticated}/>
           <Routes>
             <Route path="/"
                    element={<Home />} />
             <Route
                 path="/login"
-                element={<Login
-                    auth={isAuthenticated}
-                    toggleAuth={toggleIsAuthenticated}/>}
+                element={<Login toggleAuth={toggleIsAuthenticated}/>}
             />
             <Route
                 path="/blogposts"
                 element={<PrivateRoute
-                    isAuthenticated={isAuthenticated}><BlogOverview/>
+                    isAuthenticated={isAuthenticated}><BlogOverview />
                 </PrivateRoute>}
             />
             <Route
                 path="/blogposts/:blogId"
                 element={<PrivateRoute
-                    isAuthenticated={isAuthenticated}><BlogPost/>
+                    isAuthenticated={isAuthenticated}><BlogPost />
                 </PrivateRoute>}
               />
           <Route path="*" element={<PageNotFound/>} />
@@ -43,8 +41,6 @@ function App() {
      </>
   );
 }
-
-// De manier waarop de private routes zijn geschreven, heb ik overgenomen van een medestudent en de docent tijdens de huiswerkklas
 
 export default App;
 
