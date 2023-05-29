@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import {Navigate, Route, Routes} from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import BlogPost from "./pages/blog-post/BlogPost";
 import BlogOverview from "./pages/blog-overview/BlogOverview";
 import Login from "./pages/login/Login";
@@ -18,8 +18,9 @@ function App() {
       <>
           <Navigation isAuth={isAuthenticated} toggleAuth={toggleIsAuthenticated}/>
           <Routes>
-            <Route path="/"
-                   element={<Home />} />
+            <Route
+                path="/"
+                element={<Home />} />
             <Route
                 path="/login"
                 element={<Login toggleAuth={toggleIsAuthenticated}/>}
@@ -27,13 +28,13 @@ function App() {
             <Route
                 path="/blogposts"
                 element={<PrivateRoute
-                    isAuthenticated={isAuthenticated}><BlogOverview />
+                isAuthenticated={isAuthenticated}><BlogOverview />
                 </PrivateRoute>}
             />
             <Route
                 path="/blogposts/:blogId"
                 element={<PrivateRoute
-                    isAuthenticated={isAuthenticated}><BlogPost />
+                isAuthenticated={isAuthenticated}><BlogPost />
                 </PrivateRoute>}
               />
           <Route path="*" element={<PageNotFound/>} />
