@@ -1,0 +1,33 @@
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 40px;
+    background-color: midnightblue;
+    color: white;
+    font-size: 30px;
+}
+
+.navbar-list {
+    display: flex;
+    list-style-type: none;
+    justify-content: flex-end;
+    font-size: 20px;
+}
+
+.default-link {
+    text-decoration: none;
+    color: white;
+    padding-inline: 20px;
+}
+
+.active-link {
+    text-decoration: none;
+    color: deepskyblue;
+    padding: 20px;
+}
+
+.logout-button {
+    padding: 5px 8px;
+    margin-left: 10px;
+}

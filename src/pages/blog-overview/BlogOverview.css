@@ -1,0 +1,26 @@
+main {
+    padding: 0 30px;
+}
+
+.blog-list {
+    list-style-type: none;
+    padding-top: 20px;
+    background-color: lightblue;
+}
+
+li {
+    color: midnightblue;
+    padding: 10px;
+    text-decoration: none;
+}
+
+Link {
+    color: midnightblue;
+    text-decoration: none;
+}
+
+Link:visited {
+    color: cornflowerblue;
+}
+
+
